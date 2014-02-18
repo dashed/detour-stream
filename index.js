@@ -17,8 +17,39 @@ module.exports = function(bool, stream, opts) {
 
             var write = function() {
 
-                if (!opts.branch)
-                    stream.once("data", cb.bind(this, null));
+                if (!opts.branch) {
+
+                    var
+                    error_handle,
+                    data_handle,
+                    general;
+
+                    general = function(event, func, err, data) {
+                        if (func)
+                            stream.removeListener(event, func);
+
+                        return cb(err, data);
+                    };
+
+                    if (opts.bubbleError === true)
+                        error_handle = general.bind(this, 'data', data_handle);
+
+                    data_handle = general.bind(this, 'error', error_handle);
+
+                    // error_handle = function(err) {
+                    //     stream.removeListener('data', data_handle);
+                    //     return cb(err);
+                    // };
+
+                    // data_handle = function(data) {
+                    //     stream.removeListener('error', error_handle);
+                    //     return cb(null, data);
+                    // };
+
+                    stream.once('error', error_handle);
+                    stream.once("data", data_handle);
+                    // stream.once("data", cb.bind(this, null));
+                }
 
                 write_more = stream.write(chunk, enc);
 

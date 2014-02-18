@@ -11,8 +11,6 @@ gulp = require('gulp'),
 gutil = require('gulp-util'),
 watch = require('gulp-watch'),
 plumber = require('gulp-plumber'),
-uglify = require('gulp-uglify'),
-rename = require('gulp-rename'),
 mocha = require('gulp-mocha'),
 
 /** utility **/

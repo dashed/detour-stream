@@ -1,23 +1,23 @@
 {
   "name": "detour-stream",
-  "version": "0.0.1",
-  "description": "Use boolean expressions/functions to conditionally attach a stream as a detour or an alternative destination stream.
-",
+  "version": "0.0.0",
+  "description": "Use boolean expressions/functions to conditionally attach a stream as a detour or an alternative destination stream.",
   "main": "index.js",
   "scripts": {
     "test": "istanbul test --report html -x 'vendor/**' _mocha",
     "test-travis": "istanbul cover -x 'vendor/**' _mocha -- -R spec;A=$?;cat coverage/lcov.info | coveralls;exit $A"
   },
+  "files": ["index.js"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/amazing/project.git"
+    "url": "https://github.com/Dashed/detour-stream.git"
   },
-  "author": "Amazing author",
+  "author": "Alberto Leal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amazing/project/issues"
+    "url": "https://github.com/Dashed/detour-stream/issues"
   },
-  "homepage": "https://github.com/amazing/project",
+  "homepage": "https://github.com/Dashed/detour-stream",
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
@@ -37,6 +37,6 @@
     "npm": ">=1.2.10"
   },
   "dependencies": {
-    "through2": "~0.4.1"
+    "through2": "~0"
   }
 }

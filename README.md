@@ -13,6 +13,21 @@ Otherwise, data will pipe to **Stream B** whenever **bool** is *satisfied*.
 
 If **branch** is true, then data will **not** be piped back to **Stream D**. This is useful when emulating *if/else* with streams.
 
+Example
+=======
+
+ `detour-stream` is a function that creates a writable stream: https://nodejs.org/api/stream.html#stream_readable_pipe_destination_options
+
+The writable stream is created via `through2 v0.x.y`: https://github.com/rvagg/through2
+
+```js
+var detour = require('detour-stream');
+
+stream = fs
+  .createReadStream(filepath)
+  .pipe(detour(someBoolean, decodeStream(someOptions))) // just pipe it
+  .pipe(writeStream);
+```
 
 API
 ===
